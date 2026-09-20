@@ -1,36 +1,101 @@
-![Genesis Plus GX](Logo/Genesis-Plus-GX-Logo.png)
-Genesis Plus GX is an open-source Sega 8/16 bit emulator focused on accuracy and portability. Initially ported and developped on Gamecube / Wii consoles through [libogc / devkitPPC](http://sourceforge.net/projects/devkitpro/), this emulator is now available on many other platforms through various frontends such as:
+![Genesis Plus GX](images/Genesis-Plus-GX-Logo.png)
+# Genesis Plus GX — Windows GUI
 
-* [Retroarch (libretro)](http://www.libretro.com)
+A native Windows frontend for the [Genesis Plus GX](https://github.com/ekeeke/Genesis-Plus-GX)
+emulator core: Mega Drive / Genesis, Master System, Game Gear, SG-1000, Mega CD /
+Sega CD and Pico, in a normal Windows program with menus, a ROM browser, and
+32-bit and 64-bit builds.
 
-* [Bizhawk](http://tasvideos.org/Bizhawk.html)
+This repository is a **complete, self-contained source tree**: `core/` and `sdl/`
+are upstream Genesis Plus GX (unmodified, commit `27426f00aa68`, 2026-08-04),
+and `win32/` is the frontend. Nothing else needs downloading to build it.
 
-* [OpenEmu](http://openemu.org/)
+## Download
 
-----
+Prebuilt executables are on the **Releases** page:
 
-The source code, initially based on Genesis Plus 1.2a by [Charles MacDonald](http://www.techno-junk.org/ ) has been heavily modified & enhanced, with respect to original goals and design, in order to improve emulation accuracy as well as adding support for new peripherals, cartridge or console hardware and many other exciting [features](https://github.com/ekeeke/Genesis-Plus-GX/blob/master/wiki/Features.md).
+| File | For |
+|---|---|
+| `gpgx64.exe` | 64-bit Windows |
+| `gpgx32.exe` | 32-bit or 64-bit Windows |
 
-The result is that Genesis Plus GX is now more a continuation of the original project than a simple port, providing very accurate emulation and [100% compatibility](https://github.com/ekeeke/Genesis-Plus-GX/blob/master/wiki/Compatibility.md) with Genesis / Mega Drive, Sega/Mega CD, Master System, Game Gear & SG-1000 released software (including all unlicensed or pirate known dumps), also emulating backwards compatibility modes when available. All the people who contributed (directly or indirectly) to this project are listed on the [Credits](https://github.com/ekeeke/Genesis-Plus-GX/blob/master/wiki/Credits.md) page.
+No installer, and no extra DLLs: each needs only what ships with Windows. Put it
+in a folder of your own — it creates its settings, saves, states and cheats
+folders next to itself.
 
-----
+## What it has
 
-Multi-platform sourcecode (core), which is made available for use under a specific non-commercial [license](https://github.com/ekeeke/Genesis-Plus-GX/blob/master/LICENSE.txt), is maintained on [Bitbucket](https://bitbucket.org/eke/genesis-plus-gx/src/) / [Github](https://github.com/ekeeke/Genesis-Plus-GX) so that other Genesis Plus ports can benefit of it, as I really wish this emulator becomes a reference for _portable_ and _accurate_ Sega 8/16-bit emulation. If you ported this emulator to other platforms or need help porting it, feel free to contact me.
+ROM browser (list or grid, with cover art) · built-in render filters (Scale2x,
+Scale3x, Eagle, two edge-smoothing filters, scanlines, an RGB-mask CRT filter,
+sharp pixel scaling) and the core's NTSC filter · Game Genie / Action Replay
+cheats · save states · Direct3D 9 or GDI video · XInput gamepads · light and dark
+themes and a larger-UI mode.
 
-----
+Everything is described in [`win32/README.md`](win32/README.md), including what
+has and has not been tested.
 
-Latest official Gamecube / Wii standalone port (screenshots below) is available [here](https://github.com/ekeeke/Genesis-Plus-GX/tree/master/builds). Be sure to check the included [user manual](https://github.com/ekeeke/Genesis-Plus-GX/blob/master/gx/docs/README.pdf) first. A [startup guide](https://github.com/ekeeke/Genesis-Plus-GX/blob/master/wiki/Getting%20Started.md) and a [FAQ](https://github.com/ekeeke/Genesis-Plus-GX/blob/master/wiki/Frequently%20Asked%20Questions.md) are also available.
+## Building
 
-![MainMenu.png](https://bitbucket.org/repo/7AjE6M/images/3565283297-MainMenu.png)
-![menu_load.png](https://bitbucket.org/repo/7AjE6M/images/164055790-menu_load.png)
+You need MinGW-w64 (the C compiler) and zlib. From the `win32/` folder:
 
-![RomBrowser.png](https://bitbucket.org/repo/7AjE6M/images/1972035547-RomBrowser.png)
-![CtrlMenu.png](https://bitbucket.org/repo/7AjE6M/images/2283464354-CtrlMenu.png)
+```sh
+make -f Makefile.win32 CROSS=x86_64-w64-mingw32-     # 64-bit
+make -f Makefile.win32 CROSS=i686-w64-mingw32-        # 32-bit
+```
 
-----
+On Windows, open an MSYS2 **MINGW64** (64-bit) or **MINGW32** (32-bit) shell and
+leave `CROSS=` off. [`win32/README.md`](win32/README.md) has the package names
+and every build option.
 
-You can also test latest compiled builds for Gamecube / Wii and Retroarch (Windows 32-bit version only) by downloading them from [here](https://github.com/ekeeke/Genesis-Plus-GX/tree/master/builds).
+## Layout
 
-----
+| Folder | What it is |
+|---|---|
+| `core/` | Genesis Plus GX emulator core (upstream, unmodified) |
+| `sdl/` | Upstream files the Windows build shares (unmodified) |
+| `win32/` | The Windows frontend, and its own README |
+| `LICENSE.txt`, `HISTORY.txt`, `UPSTREAM-README.md` | Upstream's files (unmodified) |
 
-[![btn_donate_LG.gif](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=2966212) If you like this project and want to show your appreciation, Paypal donations are always welcomed.
+## The optional xBRZ add-on
+
+The frontend can also offer the **xBRZ** scaler (`xBRZ 2x` to `6x` in
+Video → Render Filter). It is **not in this repository** and is **off by
+default**, because xBRZ is licensed under the GPLv3 and that cannot be combined
+with Genesis Plus GX's non-commercial licence in one distributed program. It
+lives in its own repository under the GPLv3,
+[Genesis-Plus-GX-Win32-xBRZ-addon](https://github.com/hazem-abdelghani/Genesis-Plus-GX-Win32-xBRZ-addon).
+To use it, clone it into `win32/xbrz` from the root of this tree:
+
+```sh
+git clone https://github.com/hazem-abdelghani/Genesis-Plus-GX-Win32-xBRZ-addon win32/xbrz
+```
+
+or download `Genesis-Plus-GX-xBRZ-addon.zip` from that repository's Releases and
+unpack it inside `win32/`. Then build from `win32/` with `XBRZ=1`. Building it in
+for your own use is fine; please do not distribute an executable that contains
+it. The add-on's `README-xbrz.txt` has the details, and `.gitignore` lists
+`win32/xbrz/` so it is not committed to this repository by accident.
+
+## Licence
+
+Genesis Plus GX and this frontend are under the **Genesis Plus GX licence**,
+[`LICENSE.txt`](LICENSE.txt). In short: it is free to use and share, but it may
+not be sold or used in a commercial product or activity; a modified version you
+redistribute must come with the complete source code of everything its binary
+uses (this repository is that); and the copyright notices must be kept. Read
+`LICENSE.txt` itself for the actual terms; this summary is not a substitute for
+it, and none of this is legal advice.
+
+Some third-party parts carry their own licences, kept beside them:
+
+- Nuked OPN2 (LGPL 2.1, quoted in `LICENSE.txt`) and `core/ntsc`, Blargg's NTSC
+  filter (LGPL 2.1)
+- `core/sound/minimp3` (CC0) and `core/sound/tremor` (BSD-style)
+- `core/cd_hw/libchdr` and the lzma, zlib and zstd sources it bundles
+  (see the licence files in those folders)
+- `win32/stb_image.h`, which states its own licence in its header
+
+## Credits
+
+Genesis Plus GX is by Charles MacDonald, Eke-Eke and contributors, with portions
+from Nicola Salmoria and the MAME team. xBRZ is by Zenju.
