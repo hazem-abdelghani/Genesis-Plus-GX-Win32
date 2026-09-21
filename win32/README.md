@@ -117,9 +117,9 @@ maximized state between runs.
 |---|---|
 | Arrow keys | D-pad |
 | A, S, D | A, B, C |
-| Z, X, C | X, Y, Z |
-| F | Start |
-| V | Mode |
+| Q, W, E | X, Y, Z |
+| Enter | Start |
+| Right Shift | Mode |
 
 A connected gamepad works with no setup, laid out the way a 6-button Control
 Pad expects: face buttons give B and C, X gives A, the shoulders give X and Z.
