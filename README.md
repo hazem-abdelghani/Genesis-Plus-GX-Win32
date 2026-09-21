@@ -16,8 +16,8 @@ Prebuilt executables are on the **Releases** page:
 
 | File | For |
 |---|---|
-| `gpgx64.exe` | 64-bit Windows |
-| `gpgx32.exe` | 32-bit or 64-bit Windows |
+| `Genesis-Plus-GX-Win32-x64` | 64-bit Windows |
+| `Genesis-Plus-GX-Win32-x86` | 32-bit or 64-bit Windows |
 
 No installer, and no extra DLLs: each needs only what ships with Windows. Put it
 in a folder of your own — it creates its settings, saves, states and cheats
