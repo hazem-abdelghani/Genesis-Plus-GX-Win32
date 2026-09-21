@@ -39,7 +39,7 @@ has and has not been tested.
 You need MinGW-w64 (the C compiler) and zlib. From the `win32/` folder:
 
 ```sh
-make -f Makefile.win32 CROSS=x86_64-w64-mingw32-     # 64-bit
+make -f Makefile.win32 CROSS=x86_64-w64-mingw32-      # 64-bit
 make -f Makefile.win32 CROSS=i686-w64-mingw32-        # 32-bit
 ```
 
