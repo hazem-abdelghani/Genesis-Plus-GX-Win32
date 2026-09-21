@@ -400,7 +400,6 @@ setups for the window-position feature, and real XInput controller hardware.
 - Multitap input is mapped for four players via XInput, but only players 1 and
   2 have configurable keyboard bindings.
 - No debugger, no netplay.
-- No rewind.
 - Render filters and the NTSC filter are mutually exclusive, not combinable.
 - No hqx, 2xSaI or Super Eagle. (xBRZ is available as an add-on; the "Smooth (xBR-style)" filters are a separate, simpler design and not hqx.)
 - xBRZ is not in this repository, and cannot be part of a distributed binary, because of its GPLv3 licence; see **Render Filters**.
