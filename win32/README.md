@@ -262,14 +262,6 @@ and CRT are under 1 ms; Smooth 2x is about 1 ms; Smooth 4x is about 3.5 ms
 (about 7 ms on 320x448 interlaced frames). A frame of pure random noise, which
 no game produces, takes up to 14 ms at Smooth 4x.
 
-**Upgrading from the `.rpi` build.** `.rpi` files are no longer used, the
-`filters\` folder is no longer created, and **Filter Scale** and **Rescan
-filters folder** are gone (the optional xBRZ add-on comes in fixed 2x-6x entries instead). If
-your settings file names a plugin that happens to match a built-in
-("Scale2x.rpi"), it carries over; anything else falls back to no filter. The
-obsolete `rpi_filter` / `rpi_scale` keys are removed the next time settings
-are saved.
-
 **Adding your own.** A filter is one function in `filters.c` —
 `void f(const uint16_t *src, int src_pitch, int w, int h, uint16_t *dst, int dst_pitch)`
 producing exactly `scale` times as many pixels each way — plus one line in the
