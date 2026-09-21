@@ -23,9 +23,9 @@ No installer, and no extra DLLs: each needs only what ships with Windows. Put it
 in a folder of your own — it creates its settings, saves, states and cheats
 folders next to itself.
 
-## What it has
+## Features
 
-ROM browser (list or grid, with cover art) · built-in render filters (Scale2x,
+ROM browser (list or grid, with cover art) · Rewind · built-in render filters (Scale2x,
 Scale3x, Eagle, two edge-smoothing filters, scanlines, an RGB-mask CRT filter,
 sharp pixel scaling) and the core's NTSC filter · Game Genie / Action Replay
 cheats · save states · Direct3D 9 or GDI video · XInput gamepads · light and dark
