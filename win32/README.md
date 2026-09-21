@@ -138,6 +138,7 @@ Change any of it under **Input → Configure Player**.
 | F11 | Screenshot |
 | Alt+Enter / Esc | Enter / leave fullscreen |
 | Tab (held) | Fast forward |
+| Backspace (held) | Rewind |
 | `\` | Advance one frame while paused |
 
 Assigning a control works by listening rather than by picking from a list:
